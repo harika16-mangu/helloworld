@@ -1,15 +1,10 @@
 trigger:
-- main  # Trigger the pipeline on commits to the main branch
+- main
 
 pool:
-  vmImage: 'ubuntu-latest'  # Use Ubuntu VM to run the pipeline
+  vmImage: 'ubuntu-latest'
 
 steps:
-# Step 1: Checkout the code
-- task: Checkout@1
-  displayName: 'Checkout Code'
-
-# Step 2: Run the Hello World script
 - script: |
-    python hello.py
+    echo "Hello, World!"
   displayName: 'Run Hello World Script'
