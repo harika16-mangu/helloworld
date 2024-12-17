@@ -2,9 +2,9 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'self-hosted agent'
 
 steps:
 - script: |
-    echo "Hello, World!"
-  displayName: 'Run Hello World Script'
+    echo "Running pipeline for self hosted agent and program Hello, World!"
+  displayName: 'Self-hosted agent Test Hello World Script'
