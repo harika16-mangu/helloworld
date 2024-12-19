@@ -1,25 +1,37 @@
 trigger:
-- main  # Trigger the pipeline on changes to the 'main' branch
-
+- main
+ 
 pool:
-  name: 'self-hosted agent'  # Replace with your self-hosted agent pool name
-
+  name: 'self-hosted agent' 
+ 
 steps:
-# Step 1: Checkout the code from the repository
-- task: Checkout@1
-  displayName: 'Checkout Repository'
-
-# Step 2: Run the UFT .vbs script
-- task: CmdLine@2
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+ 
+- script: |
+    echo "Running UFT script..."
+    cscript.exe "C:\SFAutomation\FunctionLibrary\LaunchUFT.vbs"
   displayName: 'Run UFT Script'
-  inputs:
-    script: |
-      echo Starting UFT Test Execution...
-      cscript //NoLogo "C:\SFAutomation\FunctionLibrary\LaunchUFT.vbs"
 
-# Step 3: Publish Test Results (Optional)
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Test Results'
-  inputs:
-    targetPath: "C:\SFAutomation\Results" # Update with the path where UFT results are saved
-    artifactName: 'UFTResults'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
